@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ViewModels
+﻿namespace ViewModels
 {
     public class RoundViewModel
     {
-        public string WinningComination { get; set; }
+        public int Round { get; set; }
+        public string WinningComination { get; set; } 
+        public string PayIn { get; set; }
+        public string PayOut { get; set; } 
+        public string Summary { get; set; } 
     }
 }

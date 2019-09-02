@@ -1,12 +1,10 @@
-﻿using DomainModels.Enums;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ViewModels
 {
     public class CreateTicketViewModel
     {
+        [StringLength(20, ErrorMessage = "Invalid Ticket Combination", MinimumLength = 13)]
         public string Combination { get; set; }
-        public int Round { get; set; }
-        public Status Status { get; set; }
-        public int UserId { get; set; }
     }
 }

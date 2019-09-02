@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ViewModels;
 
 namespace BusinessLayer.Tickets
@@ -6,6 +7,7 @@ namespace BusinessLayer.Tickets
     public interface ITicketService
     {
         IEnumerable<TicketViewModel> GetTicketsById(int id);
-        void Create(CreateTicketViewModel ticketViewModel);
+        void CreateTicket(CreateTicketViewModel ticketViewModel, int userId);
+        IEnumerable<TicketViewModel> GetTicketsByRoundId(int roundId);
     }
 }

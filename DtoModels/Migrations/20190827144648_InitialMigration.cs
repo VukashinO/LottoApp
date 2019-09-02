@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DomainModels.Migrations
@@ -8,16 +9,18 @@ namespace DomainModels.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "RoundResults",
+                name: "Rounds",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedRound = table.Column<DateTime>(nullable: false),
+                    DateResults = table.Column<DateTime>(nullable: true),
                     WinningComination = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RoundResults", x => x.Id);
+                    table.PrimaryKey("PK_Rounds", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,7 +50,8 @@ namespace DomainModels.Migrations
                     Round = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
-                    Prize = table.Column<int>(nullable: false)
+                    Prize = table.Column<int>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,6 +64,11 @@ namespace DomainModels.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Rounds",
+                columns: new[] { "Id", "CreatedRound", "DateResults", "WinningComination" },
+                values: new object[] { 1, new DateTime(2019, 8, 27, 16, 46, 48, 435, DateTimeKind.Local).AddTicks(2578), null, null });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_UserId",
                 table: "Tickets",
@@ -69,7 +78,7 @@ namespace DomainModels.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "RoundResults");
+                name: "Rounds");
 
             migrationBuilder.DropTable(
                 name: "Tickets");

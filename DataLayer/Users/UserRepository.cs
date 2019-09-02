@@ -31,7 +31,7 @@ namespace DataLayer.Users
 
         public User GetById(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Users.FirstOrDefault(u => u.Id == id);
         }
 
         public User GetUserByUserName(string username)
@@ -41,7 +41,8 @@ namespace DataLayer.Users
 
         public void Update(User obj)
         {
-            throw new NotImplementedException();
+            _dbContext.Update(obj);
+            _dbContext.SaveChanges();
         }
     }
 }

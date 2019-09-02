@@ -10,3 +10,15 @@ C:\Users\vukashin.obradovikj\source\repos\LottoApp\DataLayer\bin\Debug\netstanda
 C:\Users\vukashin.obradovikj\source\repos\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.csproj.CopyComplete
 C:\Users\vukashin.obradovikj\source\repos\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.dll
 C:\Users\vukashin.obradovikj\source\repos\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.pdb
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\bin\Debug\netstandard2.0\DataLayer.deps.json
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\bin\Debug\netstandard2.0\DataLayer.dll
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\bin\Debug\netstandard2.0\DataLayer.pdb
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\bin\Debug\netstandard2.0\DomainModels.dll
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\bin\Debug\netstandard2.0\DomainModels.pdb
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.csprojAssemblyReference.cache
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.AssemblyInfoInputs.cache
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.AssemblyInfo.cs
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.csproj.CopyComplete
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.dll
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DataLayer\obj\Debug\netstandard2.0\DataLayer.pdb

@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DomainModels;
 
@@ -16,7 +15,7 @@ namespace DataLayer.Tickets
 
         public void Create(Ticket obj)
         {
-            _dbContext.Add(obj);
+            _dbContext.Tickets.Add(obj);
             _dbContext.SaveChanges();
         }
 
@@ -27,7 +26,7 @@ namespace DataLayer.Tickets
 
         public IEnumerable<Ticket> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _dbContext.Tickets.ToList();
         }
 
         public Ticket GetById(int id)
@@ -37,7 +36,12 @@ namespace DataLayer.Tickets
 
         public IEnumerable<Ticket> GetTicketByUserId(int id)
         {
-           return _dbContext.Tickets.Where(t => t.UserId == id);
+            return _dbContext.Tickets.Where(t => t.UserId == id);
+        }
+
+        public IEnumerable<Ticket> GetTicketsByRound(int roundId)
+        {
+            return _dbContext.Tickets.Where(t => t.Round == roundId);
         }
 
         public void Update(Ticket obj)

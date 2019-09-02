@@ -1,14 +1,15 @@
 ﻿using System;
-using BusinessLayer;
+using BusinessLayer.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels;
 
-
 namespace LottoApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : BaseController
     {
         private readonly IUserService _userService;
 
@@ -27,19 +28,33 @@ namespace LottoApp.Controllers
             }
             catch (Exception)
             {
-
                 return BadRequest("something went wrong");
             }
         }
 
-        [Route("create-user")]
+        [AllowAnonymous]
+        [Route("register")]
         [HttpPost]
         public IActionResult Create([FromBody]RegisterViewModel registerViewModel)
         {
             try
             {
-                _userService.Register(registerViewModel);
-                return Ok("Succseffuly created user");
+                return Ok(_userService.Register(registerViewModel));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [Route("login")]
+        [HttpPost]
+        public IActionResult Login([FromBody]LogInViewModel logInViewModel)
+        {
+            try
+            {
+                return Ok(_userService.Login(logInViewModel));
             }
             catch (Exception ex)
             {

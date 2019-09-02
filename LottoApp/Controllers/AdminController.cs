@@ -1,27 +1,59 @@
-﻿using System.Collections.Generic;
-using BusinessLayer.CreateRound;
+﻿using BusinessLayer.Rounds;
+using BusinessLayer.Tickets;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace LottoApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
-    public class AdminController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : BaseController
     {
-        private readonly ICreateRound _createRound;
+        private readonly IRoundService _roundService;
+        private readonly ITicketService _ticketService;
 
-        public AdminController(ICreateRound createRound)
+        public AdminController(IRoundService roundService, ITicketService ticketService)
         {
-            _createRound = createRound;
+            _roundService = roundService;
+            _ticketService = ticketService;
         }
-       [Route("create-round")]
-       [HttpPost]
-       public IActionResult CreateRound()
+        [Route("create-round")]
+        [HttpPut]
+        public IActionResult CreateRound()
         {
             try
             {
-                return Ok(_createRound.ActivateRound());
+                _roundService.GenerateRound();
+                return Ok();
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("tickets/{roundId}")]
+        [HttpGet]
+        public IActionResult GetAllTickets(int roundId)
+        {
+            try
+            {
+                return Ok(_ticketService.GetTicketsByRoundId(roundId));
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [Route("round-result/{roundId}")]
+        [HttpGet]
+        public IActionResult GetRoundResults(int roundId)
+        {
+            try
+            {
+                return Ok(_roundService.GetRoundResult(roundId));
             }
             catch (System.Exception ex)
             {
@@ -29,5 +61,6 @@ namespace LottoApp.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
     }
 }

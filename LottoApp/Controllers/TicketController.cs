@@ -1,11 +1,13 @@
 ﻿using BusinessLayer.Tickets;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels;
 
 namespace LottoApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
-    public class TicketController : Controller
+    public class TicketController : BaseController
     {
         private readonly ITicketService _ticketService;
 
@@ -14,17 +16,16 @@ namespace LottoApp.Controllers
             _ticketService = ticketService;
         }
 
-        [Route("gettickets/{id}")]
+        [Route("gettickets")]
         [HttpGet]
-        public IActionResult GetTicketsById(int id)
+        public IActionResult GetTicketsById()
         {
             try
             {
-                return Ok(_ticketService.GetTicketsById(id));
+                return Ok(_ticketService.GetTicketsById(CurrentUser.Id));
             }
             catch (System.Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
@@ -35,12 +36,11 @@ namespace LottoApp.Controllers
         {
             try
             {
-                _ticketService.Create(createTicketViewModel);
-                return Ok("Succseffuly created ticket");
+                _ticketService.CreateTicket(createTicketViewModel, CurrentUser.Id);
+                return Ok();
             }
             catch (System.Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
