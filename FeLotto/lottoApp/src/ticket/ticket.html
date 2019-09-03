@@ -1,0 +1,12 @@
+<template>
+  <require from="../ticket-list/ticket-list"></require>
+  <div>
+    <form submit.trigger="onSubmit()">
+        <input type="number" repeat.for="number of numbers" value.bind="number.combination"/> 
+        <input type="submit"></button> 
+    </form>
+  </div>
+  <ticket-list></ticket-list>
+  <button click.trigger="signOut()">Sign Out</button>
+  <button click.trigger="onClick()">Go to Admin page</button>
+</template>

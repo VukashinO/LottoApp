@@ -1,0 +1,8 @@
+<template>
+  <h1>${message}</h1>
+  <ul>
+    <li repeat.for="ticket of ticketsByround">
+      round: ${ticket.round}  ||  combination: ${ticket.combination}  ||  prize: ${ticket.prize}
+    </li>
+  </ul>
+</template>

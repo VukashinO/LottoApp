@@ -1,5 +1,4 @@
 ﻿using BusinessLayer.Rounds;
-using BusinessLayer.Tickets;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +10,10 @@ namespace LottoApp.Controllers
     public class AdminController : BaseController
     {
         private readonly IRoundService _roundService;
-        private readonly ITicketService _ticketService;
 
-        public AdminController(IRoundService roundService, ITicketService ticketService)
+        public AdminController(IRoundService roundService)
         {
             _roundService = roundService;
-            _ticketService = ticketService;
         }
         [Route("create-round")]
         [HttpPut]
@@ -33,19 +30,19 @@ namespace LottoApp.Controllers
             }
         }
 
-        [Route("tickets/{roundId}")]
-        [HttpGet]
-        public IActionResult GetAllTickets(int roundId)
-        {
-            try
-            {
-                return Ok(_ticketService.GetTicketsByRoundId(roundId));
-            }
-            catch (System.Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        //[Route("tickets-byround/{roundId}")]
+        //[HttpGet]
+        //public IActionResult GetTicketsByRoundId(int roundId)
+        //{
+        //    try
+        //    {
+        //        return Ok(_ticketService.GetTicketsByRoundId(roundId));
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
         [Route("round-result/{roundId}")]
         [HttpGet]
@@ -57,7 +54,6 @@ namespace LottoApp.Controllers
             }
             catch (System.Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }

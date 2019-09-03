@@ -1,0 +1,15 @@
+<template>
+  <form submit.trigger="onSubmit()">
+    <h1>Log In</h1>
+      <div>
+          <input type="text" placeholder="E-mail" value.bind="logIn.userName"/>
+      </div>
+      <div>
+          <input type="password" placeholder="Password" value.bind="logIn.password"/>
+      </div>
+      <div>
+          <input type="submit" />
+      </div>
+  </form>
+  <div if.bind="error">${error}</div>
+</template>

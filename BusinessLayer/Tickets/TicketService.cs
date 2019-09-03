@@ -73,6 +73,7 @@ namespace BusinessLayer.Tickets
             var ticket = _ticketRepository.GetTicketByUserId(id);
             return ticket.Select(t => new TicketViewModel
             {
+                Id = t.Id,
                 Combination = t.Combination,
                 Round = t.Round,
                 Status = t.Status,
