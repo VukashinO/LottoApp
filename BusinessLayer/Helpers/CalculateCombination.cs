@@ -2,11 +2,14 @@
 
 namespace BusinessLayer.Helpers
 {
-    public class CalculateCombination : ICalculateCombination 
+    public static class CalculateCombination  
     {
-        public int GetNumberOfCorrectValues(string ticket, string roundCombination)
+        public static int GetNumberOfCorrectValues(string ticket, string roundCombination)
         {
             var result = 0;
+
+            if (string.IsNullOrEmpty(roundCombination)) return result;
+
             var winningCombination = roundCombination.Split(';');
             var userTicket = ticket.Split(';');
 
@@ -19,7 +22,7 @@ namespace BusinessLayer.Helpers
             return result;
         }
 
-        public int CalculatePrize(int count)
+        public static int CalculatePrize(int count)
         {
             switch (count)
             {

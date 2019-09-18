@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using DataLayer.Tickets.Views;
 using DomainModels;
 
 namespace DataLayer.Tickets
@@ -34,19 +35,46 @@ namespace DataLayer.Tickets
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Ticket> GetTicketByUserId(int id)
+        public IEnumerable<TicketView> GetTicketByUserId(int id)
         {
-            return _dbContext.Tickets.Where(t => t.UserId == id);
+            return GetAllTickets().Where(t => t.UserId == id);
         }
 
-        public IEnumerable<Ticket> GetTicketsByRound(int roundId)
+        public IEnumerable<TicketView> GetTicketsByRound(int roundId)
         {
-            return _dbContext.Tickets.Where(t => t.Round == roundId);
+            return GetAllTickets().Where(t => t.RoundId == roundId);
+        }
+
+        public IEnumerable<TicketView> GetTickets()
+        {
+            return GetAllTickets().ToList();
         }
 
         public void Update(Ticket obj)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SaveContext()
+        {
+            _dbContext.SaveChanges();
+        }
+
+        private IQueryable<TicketView> GetAllTickets()
+        {
+            return
+                from t in _dbContext.Tickets
+                join r in _dbContext.Rounds on t.Round equals r.Id 
+                select new TicketView
+                {
+                    Id = t.Id,
+                    Combination = t.Combination,
+                    RoundCombination = r.WinningComination,
+                    RoundId = t.Round,
+                    DateOfTicket = t.DateCreated.Value,
+                    UserId = t.UserId,
+                    Status = t.Status
+                };
         }
     }
 }

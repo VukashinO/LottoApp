@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Helpers;
+﻿using BusinessLayer.Mappers;
 using DataLayer.Rounds;
 using DataLayer.Tickets;
 using DataLayer.Users;
@@ -16,19 +16,16 @@ namespace BusinessLayer.Tickets
         private readonly ITicketRepository _ticketRepository;
         private readonly IRoundRepository _roundRepository;
         private readonly IUserRepository _userRepository;
-        private readonly ICalculateCombination _calculateCombination;
 
         public TicketService(
             ITicketRepository ticketRepository,
             IRoundRepository roundRepository,
-            IUserRepository userRepository,
-            ICalculateCombination calculateCombination
+            IUserRepository userRepository
             )
         {
             _ticketRepository = ticketRepository;
             _roundRepository = roundRepository;
             _userRepository = userRepository;
-            _calculateCombination = calculateCombination;
         }
 
         public void CreateTicket(CreateTicketViewModel ticketViewModel, int userId)
@@ -71,30 +68,18 @@ namespace BusinessLayer.Tickets
         public IEnumerable<TicketViewModel> GetTicketsById(int id)
         {
             var ticket = _ticketRepository.GetTicketByUserId(id);
-            return ticket.Select(t => new TicketViewModel
-            {
-                Id = t.Id,
-                Combination = t.Combination,
-                Round = t.Round,
-                Status = t.Status,
-                UserId = t.UserId
-            });
+            return ticket.Select(t => t.ToTicketViewModel()).OrderByDescending(x => x.Round);
         }
 
         public IEnumerable<TicketViewModel> GetTicketsByRoundId(int roundId)
         {
-            var roundComb = _roundRepository.GetById(roundId).WinningComination;
+            return _ticketRepository.GetTicketsByRound(roundId)
+             .Select(t => t.ToTicketViewModel());
+        }
 
-            return _ticketRepository.GetTicketsByRound(roundId).Select(t => new TicketViewModel
-            {
-                UserId = t.UserId,
-                Combination = t.Combination,
-                Status = t.Status,
-                Round = t.Round,
-                DateCreated = t.DateCreated,
-                Prize = _calculateCombination.CalculatePrize(_calculateCombination
-                .GetNumberOfCorrectValues(t.Combination, roundComb))
-            });
+        public IEnumerable<TicketViewModel> GetAllTickets()
+        {
+            return _ticketRepository.GetTickets().Select(t => t.ToTicketViewModel());
         }
 
         private void ValidateNumbers(string input)

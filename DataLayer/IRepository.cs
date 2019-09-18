@@ -9,5 +9,6 @@ namespace DataLayer
         void Update(T obj);
         T GetById(int id);
         void Delete(T obj);
+        void SaveContext();
     }
 }

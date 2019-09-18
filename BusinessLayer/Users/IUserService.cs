@@ -8,5 +8,6 @@ namespace BusinessLayer.Users
         IEnumerable<UserViewModel> GetAllUsers();
         AuthorizeModel Register(RegisterViewModel registerViewModel);
         AuthorizeModel Login(LogInViewModel logInViewModel);
+        RoundWinningCombinationViewModel GetLastRoundCombination();
     }
 }

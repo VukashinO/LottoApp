@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Helpers;
+using DataLayer.Rounds;
 using DataLayer.Users;
 using DomainModels;
 using DomainModels.Enums;
@@ -16,18 +17,21 @@ namespace BusinessLayer.Users
         private readonly ITokenHelper _tokenHelper;
         private readonly IPasswordHelper _passwordHelper;
         private readonly IHashHelper _hashHelper;
+        private readonly IRoundRepository _roundRepository;
 
         public UserService(
             IUserRepository userRepository,
             ITokenHelper tokenHelper,
             IPasswordHelper passwordHelper,
-            IHashHelper hashHelper
+            IHashHelper hashHelper,
+            IRoundRepository roundRepository
             )
         {
             _userRepository = userRepository;
             _tokenHelper = tokenHelper;
             _passwordHelper = passwordHelper;
             _hashHelper = hashHelper;
+            _roundRepository = roundRepository;
         }
         public IEnumerable<UserViewModel> GetAllUsers()
         {
@@ -44,7 +48,7 @@ namespace BusinessLayer.Users
 
         public AuthorizeModel Register(RegisterViewModel registerViewModel)
         {
-            if(!new EmailAddressAttribute().IsValid(registerViewModel.UserName)) throw new Exception("Invalid E-mail");
+            if (!new EmailAddressAttribute().IsValid(registerViewModel.UserName)) throw new Exception("Invalid E-mail");
 
             if (!_passwordHelper.GetPasswordRegex(registerViewModel.Password)) throw new Exception("Invalid Credentials");
 
@@ -89,6 +93,20 @@ namespace BusinessLayer.Users
             model.Token = _tokenHelper.GenerateToken(user.UserName, user.Id, user.Role);
             model.IsAdmin = user.Role == Role.Admin ? true : false;
             return model;
+        }
+
+        public RoundWinningCombinationViewModel GetLastRoundCombination()
+        {
+            var roundResult = _roundRepository.GetAll()
+                .LastOrDefault(r => r.WinningComination != null);
+
+            if (roundResult == null) throw new Exception("There is no Active Round");
+
+            return new RoundWinningCombinationViewModel
+            {
+                Round = roundResult.Id,
+                WinningCombination = roundResult.WinningComination
+            };
         }
     }
 }

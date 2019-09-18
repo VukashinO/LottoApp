@@ -45,5 +45,10 @@ namespace DataLayer.Rounds
         {
             return _dbContext.Tickets.Where(t => t.DateCreated >= startDate.Date && t.DateCreated <= endDate);
         }
+
+        public void SaveContext()
+        {
+            _dbContext.SaveChanges();
+        }
     }
 }

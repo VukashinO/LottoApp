@@ -7,6 +7,7 @@ namespace ViewModels
     {
         public int Id { get; set; }
         public string Combination { get; set; }
+        public string RoundCombination { get; set; }
         public int Round { get; set; }
         public Status Status { get; set; }
         public int UserId { get; set; }
