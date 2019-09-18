@@ -14,3 +14,4 @@ C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DtoModels\obj\De
 C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DtoModels\obj\Debug\netstandard2.0\DomainModels.AssemblyInfo.cs
 C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DtoModels\obj\Debug\netstandard2.0\DomainModels.dll
 C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DtoModels\obj\Debug\netstandard2.0\DomainModels.pdb
+C:\Users\Vukashin.obradovikj\Desktop\lottoApp-back-end\LottoApp\DtoModels\obj\Debug\netstandard2.0\DomainModels.csprojAssemblyReference.cache
