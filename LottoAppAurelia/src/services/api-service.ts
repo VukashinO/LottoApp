@@ -41,7 +41,7 @@ export class ApiService {
         return jsonResponse<void>( this.getTokken().put(`${EndPoints.baseUrl}${EndPoints.generateRound}`, null) );
     }
     
-    public getResultsByRound() {
+    public getAllRounds() {
         return jsonResponse<IRoundVIewModel[]>( this.getTokken().get(`${EndPoints.baseUrl}${EndPoints.getResultsByRound}`) );
     }
 

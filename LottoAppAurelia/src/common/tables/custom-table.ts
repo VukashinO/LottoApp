@@ -1,9 +1,14 @@
-import { observable, bindable } from 'aurelia-framework';
+import { observable, bindable, inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 
+@inject(Router)
 export class CustomTable  {
+    @bindable public tableId: string = 'tableId';
     @bindable public items: any[] = [];
     @bindable public columns: ICustomColumn[] = [];
     @bindable public entity: string = '';
+    @bindable public callback: () => {};
+
     @observable public selectedItemsPerPage:string = "5";
 
     public paginationItems: any[] = [];
@@ -16,13 +21,13 @@ export class CustomTable  {
     public end: number;
     private isLoad: boolean = false;
 
-    constructor() {}
+    constructor(private route:Router) {} 
 
     public async attached () {
         this.isLoad = true;
     }
 
-    public  itemsChanged(newValue: any[], oldValue: any[]) {
+    public itemsChanged(newValue: any[], oldValue: any[]) {
         this.setPages();
     } 
 
@@ -79,9 +84,3 @@ export class CustomTable  {
     }
 }
 
-
-export class KeysValueConverter {
-    toView(obj) {
-      return Reflect.ownKeys(obj);
-    }
-  }
