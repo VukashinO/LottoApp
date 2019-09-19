@@ -8,6 +8,7 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 export class Ticket {
   public numbers: ITicketPostModel[] = [];
   public checking;
+  public errorDuplicate: boolean = false;
   constructor(private service: ApiService, private route: Router, private event: EventAggregator) { }
 
   public attached() {
@@ -23,6 +24,9 @@ export class Ticket {
   }
 
   public async onCreateTicket() {
+    if(!this.checkIfSameNumber()) return;
+    this.errorDuplicate = false;
+
     let postStringCombination = { combination: this.numbers.map(n => `${n.combination}`).join(';') };
     await this.service.createTicket(postStringCombination);
     this.event.publish(Events.ReloadTicketList);
@@ -33,5 +37,16 @@ export class Ticket {
     this.checking = await this.service.checkIfAdmin();
     this.service.isAdmin = true;
     this.route.navigateToRoute('admin');
+  }
+
+  private checkIfSameNumber() {
+    let uniqueValues: number[] = [];
+    this.numbers.forEach(n => uniqueValues.push(+n.combination));
+    let duplicate = uniqueValues.filter((item, index) => uniqueValues.indexOf(item) === index);
+    if (duplicate.length < 7) {
+      this.errorDuplicate = true;
+      return false;
+    }
+    return true;
   }
 }

@@ -4,12 +4,12 @@
         <nav class="navbar navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">LottoApp</a>
             <button if.bind="renderNav" class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#collapsingNavbar"
-                aria-controls="collapsingNavbar" aria-expanded="false" aria-label="Toggle navigation" click.trigger="onClick()">
+                aria-controls="collapsingNavbar" aria-expanded="false" aria-label="Toggle navigation" click.trigger="handleToggleVisible()">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="dropdown-menu dropdown-menu-right positionNavItems" class.bind="show ? 'show' : ''" id="collapsingNavbar">
                 <button class="dropdown-item" type="button">${user}</button>
-                <button class="dropdown-item" type="button">Ticket</button>
+                <button click.trigger="goToTicketPage()" class="dropdown-item" type="button">Ticket</button>
                 <button if.bind="admin" class="dropdown-item" type="button" click.trigger="handleAdminPage()">Go To
                     Admin Page</button>
                 <div class="dropdown-divider"></div>

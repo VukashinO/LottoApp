@@ -1,13 +1,11 @@
-import { observable, bindable, inject } from "aurelia-framework";
-import { Router } from "aurelia-router"; // prasaj za ova route...
+import { observable, bindable } from "aurelia-framework";
 
-@inject(Router)
 export class CustomTable {
   @bindable public tableId: string = "tableId";
   @bindable public items: any[] = [];
   @bindable public columns: ICustomColumn[] = [];
   @bindable public entity: string = "";
-  @bindable public callback: () => {};
+  @bindable public callback: Function;
 
   @observable public selectedItemsPerPage: string = "5";
 
@@ -21,7 +19,7 @@ export class CustomTable {
   public end: number;
   private isLoad: boolean = false;
 
-  constructor(private route: Router) {} // prasaj za ova route...
+  constructor() {} 
 
   public async attached() {
     this.isLoad = true;

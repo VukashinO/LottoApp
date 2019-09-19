@@ -20,7 +20,8 @@ export class Admin {
         this.roundResults = await this.service.getAllRounds();
     }
 
-    public getTicketsByRoundId(round: number) {
+    // Arrow Function because of the Context
+    public getTicketsByRoundId = (round: number) => { 
         this.route.navigateToRoute('ticketsByRound', { roundId: round });
     }
 
@@ -42,11 +43,9 @@ export class Admin {
                 propertyName: 'summary',
                 propertyTitle: 'Summary'
             }
-        ];
-
-    }
-
-
+        ]
+    };
+}
 
 
 

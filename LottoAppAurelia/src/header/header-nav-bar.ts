@@ -17,7 +17,7 @@ export class HeaderNavBar {
     this.renderNav = localStorage.getItem(AuthToken.token) ? true : false;
   }
 
-  public onClick() {
+  public handleToggleVisible() {
     this.show = !this.show;
   }
 
@@ -36,5 +36,9 @@ export class HeaderNavBar {
 
   public handleAdminPage() {
     this.route.navigateToRoute('admin');
+  }
+
+  public goToTicketPage() {
+    this.route.navigateToRoute('ticket');
   }
 }
