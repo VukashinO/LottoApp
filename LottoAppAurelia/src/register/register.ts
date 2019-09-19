@@ -7,8 +7,8 @@ import { AuthToken } from 'userAuthorization/auth-token';
 export class Register {
   public register: IRegisterViewModel;
   public authorize: IAuthorizeModel;
-  constructor(private service: ApiService, private route: Router) {}
-  
+  constructor(private service: ApiService, private route: Router) { }
+
 
   public async onRegister() {
     this.authorize = await this.service.register(this.register);

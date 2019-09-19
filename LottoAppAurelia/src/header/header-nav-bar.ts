@@ -11,10 +11,10 @@ export class HeaderNavBar {
   public user = localStorage.getItem(AuthToken.user);
   public admin = localStorage.getItem(AuthToken.admin);
 
-  constructor(private service: ApiService, private route: Router) {}
+  constructor(private service: ApiService, private route: Router) { }
 
   public attached() {
-  this.renderNav = localStorage.getItem(AuthToken.token) ? true : false;
+    this.renderNav = localStorage.getItem(AuthToken.token) ? true : false;
   }
 
   public onClick() {

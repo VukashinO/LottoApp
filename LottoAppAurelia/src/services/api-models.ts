@@ -1,22 +1,22 @@
 interface Player {
-    username : string,
-    firstName : string, 
-    lastName : string,
-    balance : number,
-    role : any
+    username: string,
+    firstName: string,
+    lastName: string,
+    balance: number,
+    role: any
 }
 
 interface ITicketPostModel {
-    combination : string
+    combination: string
 }
 
 interface IResponceTicketViewModel {
-    id : number,
+    id: number,
     round: number,
-    combination : string,
-    roundCombination:string,
-    status : number,
-    prize : number,
+    combination: string,
+    roundCombination: string,
+    status: number,
+    prize: number,
     dateCreated: Date
 }
 

@@ -2,26 +2,22 @@
     <require from="header/header-nav-bar"></require>
     <require from="../common/tables/custom-table"></require>
 
-  <header-nav-bar router.bind="router" class="header"></header-nav-bar>
-    
-  <div class="mainBody">
-    <div class="row justify-content-end containerTicket">
-      <div class="col-9">
-          <button class="btn btn-primary" click.trigger="createRound()">Generate Round</button>
-      </div>
+    <header-nav-bar router.bind="router" class="header"></header-nav-bar>
 
-    </div> 
-    <div class="row justify-content-center containerTicket">
-        <div class="col-6">
-            <custom-table
-            callback.bind="getTicketsByRoundId"
-            table-id="roundTable"
-            items.bind="roundResults"
-            entity="rounds"
-            columns.bind="roundColumns">
-        </custom-table>
-        </div>   
-    </div>
+    <div class="mainBody">
+        <div class="row justify-content-end containerTicket">
+            <div class="col-9">
+                <button class="btn btn-primary" click.trigger="createRound()">Generate Round</button>
+            </div>
+
+        </div>
+        <div class="row justify-content-center containerTicket">
+            <div class="col-6">
+                <custom-table callback.bind="getTicketsByRoundId" table-id="roundTable" items.bind="roundResults"
+                    entity="rounds" columns.bind="roundColumns">
+                </custom-table>
+            </div>
+        </div>
 </template>
 
 

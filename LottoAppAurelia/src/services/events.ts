@@ -1,4 +1,4 @@
 export const Events = {
     ReloadTicketList: 'ReloadTicketList',
-    TicketsByRound : 'TicketsByRound'
+    TicketsByRound: 'TicketsByRound'
 }

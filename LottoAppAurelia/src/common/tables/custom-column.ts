@@ -1,4 +1,4 @@
 interface ICustomColumn {
-    propertyTitle: string,
-    propertyName: string
+  propertyTitle: string;
+  propertyName: string;
 }

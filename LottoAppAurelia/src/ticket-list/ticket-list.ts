@@ -1,19 +1,19 @@
 import { ApiService } from '../services/api-service';
-import {EventAggregator} from 'aurelia-event-aggregator';
+import { EventAggregator } from 'aurelia-event-aggregator';
 import { inject } from 'aurelia-framework';
 import { Events } from '../services/events';
 
-@inject( ApiService, EventAggregator )
-export class TicketList  {
-    
-     public tickets : IResponceTicketViewModel[] = [];
-     public ticketsColumns: ICustomColumn[] = [];
+@inject(ApiService, EventAggregator)
+export class TicketList {
 
-    constructor( private service : ApiService, private eventAggregator : EventAggregator ) {}
+    public tickets: IResponceTicketViewModel[] = [];
+    public ticketsColumns: ICustomColumn[] = [];
 
-    public async attached () {
+    constructor(private service: ApiService, private eventAggregator: EventAggregator) { }
+
+    public async attached() {
         this.eventAggregator.subscribe(Events.ReloadTicketList, () => {
-          this.getTickets();
+            this.getTickets();
         });
         await this.getTickets();
     }
