@@ -1,4 +1,4 @@
-import { ApiService } from "../services/api-service";
+import { ApiService } from "../../services/api-service";
 import { Router } from "aurelia-router";
 import { inject } from "aurelia-framework";
 import { Events } from "services/events";

@@ -108,5 +108,14 @@ namespace BusinessLayer.Users
                 WinningCombination = roundResult.WinningComination
             };
         }
+
+        //private int CalculateAge(string dateTime)
+        //{
+        //    var birthdate = DateTime.Parse(dateTime);
+        //    var today = DateTime.Today;
+        //    var age = today.Year - birthdate.Year;
+        //    if (birthdate.Date > today.AddYears(-age)) age--;
+        //    return age;
+        //}
     }
 }

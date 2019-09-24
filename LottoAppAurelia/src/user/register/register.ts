@@ -1,14 +1,14 @@
 import { ApiService } from "services/api-service";
 import { inject, observable } from "aurelia-framework";
 import { Router } from "aurelia-router";
-import { AuthToken } from "userAuthorization/auth-token";
+import { AuthToken } from "../userAuthorization/auth-token";
 
 @inject(ApiService, Router)
 export class Register {
   public register: IRegisterViewModel;
   public authorize: IAuthorizeModel;
   public checkIf18: boolean;
-  @observable public ageValue: Date;
+  @observable public ageValue: string;
   constructor(private service: ApiService, private route: Router) {}
 
   ageValueChanged(newValue) {

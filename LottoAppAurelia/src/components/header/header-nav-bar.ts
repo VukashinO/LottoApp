@@ -1,7 +1,7 @@
 import { bindable, inject } from "aurelia-framework";
-import { ApiService } from '../services/api-service';
+import { ApiService } from '../../services/api-service';
 import { Router } from 'aurelia-router';
-import { AuthToken } from 'userAuthorization/auth-token';
+import { AuthToken } from '../../user/userAuthorization/auth-token';
 
 @inject(ApiService, Router)
 export class HeaderNavBar {

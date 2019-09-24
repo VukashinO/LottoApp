@@ -7,12 +7,14 @@ export class Admin {
   public roundResults: IRoundVIewModel[] = [];
   public roundColumns: ICustomColumn[] = [];
   constructor(private service: ApiService, private route: Router) {}
+
   public async attached() {
     await this.getRoundResults();
   }
 
   public async createRound() {
     await this.service.generateRound();
+    this.getRoundResults();
   }
 
   private async getRoundResults() {

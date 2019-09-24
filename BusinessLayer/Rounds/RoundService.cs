@@ -49,7 +49,7 @@ namespace BusinessLayer.Rounds
 
             var model = _roundRepository.GetAll().FirstOrDefault(r => string.IsNullOrEmpty(r.WinningComination));
 
-            model.WinningComination = "5;6;7;8;9;10;11";
+            model.WinningComination = "5;15;25;1;9;10;11";
             model.DateResults = DateTime.Now;
             _roundRepository.Update(model);
 

@@ -1,7 +1,7 @@
-import { ApiService } from '../services/api-service';
+import { ApiService } from '../../services/api-service';
 import { EventAggregator } from 'aurelia-event-aggregator';
 import { inject } from 'aurelia-framework';
-import { Events } from '../services/events';
+import { Events } from '../../services/events';
 
 @inject(ApiService, EventAggregator)
 export class TicketList {
