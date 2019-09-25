@@ -1,9 +1,22 @@
-interface Player {
-  username: string;
+interface IAuthorizeModel {
+  id: number;
+  userName: string;
+  token: string;
+  isAdmin: boolean;
+}
+
+interface IRegisterViewModel {
   firstName: string;
   lastName: string;
-  balance: number;
-  role: any;
+  userName: string;
+  password: string;
+  confirmPassword: string;
+  age: number;
+}
+
+interface ILogInViewModel {
+  userName: string;
+  password: string;
 }
 
 interface ITicketPostModel {
@@ -25,37 +38,6 @@ interface IRoundWinningCombination {
   winningCombination: string;
 }
 
-interface ITicketValue {
-  id: number;
-  value: string;
-}
-
-interface ICombinations {
-  id: number;
-  ticket: ITicketValue[];
-}
-
-interface IAuthorizeModel {
-  id: number;
-  userName: string;
-  token: string;
-  isAdmin: boolean;
-}
-
-interface ILogInViewModel {
-  userName: string;
-  password: string;
-}
-
-interface IRegisterViewModel {
-  firstName: string;
-  lastName: string;
-  userName: string;
-  password: string;
-  confirmPassword: string;
-  age: number;
-}
-
 interface IRoundVIewModel {
   round: number;
   winningCombination: string;
@@ -68,3 +50,8 @@ interface IWinningCombination {
   round: number;
   WinningCombination: string;
 }
+
+
+
+
+

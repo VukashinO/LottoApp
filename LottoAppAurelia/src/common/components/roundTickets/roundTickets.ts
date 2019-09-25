@@ -27,6 +27,7 @@ export class RoundTickets {
 
     private async getWinningCombinationByRoundId(round: number) {
       this.winningCombination = await this.service.getWinningCombinationByRoundId(round);
+      console.log(this.winningCombination)
     }
 
     private getTicketsByRoundColumns() {
