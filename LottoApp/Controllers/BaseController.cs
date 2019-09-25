@@ -25,7 +25,9 @@ namespace LottoApp.Controllers
 
             if (string.IsNullOrEmpty(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return null;
+
             var check = currentUser.FindFirst(ClaimTypes.Role).Value == "Admin" ? true : false;
+
             return new AuthorizeModel
             {
                 Id = int.Parse(currentUser.FindFirst(ClaimTypes.NameIdentifier).Value),

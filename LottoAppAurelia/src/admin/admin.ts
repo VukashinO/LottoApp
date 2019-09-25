@@ -1,5 +1,5 @@
 import { inject } from "aurelia-framework";
-import { ApiService } from "services/api-service";
+import { ApiService } from "../common/services/api-service";
 import { Router } from "aurelia-router";
 
 @inject(ApiService, Router)
@@ -35,7 +35,7 @@ export class Admin {
       },
       {
         propertyName: "winningCombination",
-        propertyTitle: "WinningCombination"
+        propertyTitle: "Winning Combination"
       },
       {
         propertyName: "payIn",

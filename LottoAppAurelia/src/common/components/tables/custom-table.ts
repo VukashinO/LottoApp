@@ -6,7 +6,6 @@ export class CustomTable {
   @bindable public columns: ICustomColumn[] = [];
   @bindable public entity: string = "";
   @bindable public callback: Function;
-
   @observable public selectedItemsPerPage: string = "5";
 
   public paginationItems: any[] = [];
@@ -83,3 +82,8 @@ export class CustomTable {
     this.loadPaginationTickets();
   }
 }
+
+
+
+
+

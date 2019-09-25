@@ -1,4 +1,4 @@
-import { ApiService } from "../../services/api-service";
+import { ApiService } from "../../common/services/api-service";
 import { Router } from "aurelia-router";
 import { inject } from "aurelia-framework";
 import { AuthToken } from "../userAuthorization/auth-token";
@@ -21,10 +21,12 @@ export class LogIn {
     this.authorize = await this.service.logIn(this.logIn);
     localStorage.setItem(AuthToken.token, this.authorize.token);
     localStorage.setItem(AuthToken.user, this.authorize.userName);
+
     if (this.authorize.isAdmin) {
       this.service.isAdmin = true;
       localStorage.setItem(AuthToken.admin, "yes you are admin!");
     }
+
     this.service.isAuth = true;
     this.route.navigateToRoute("ticket");
   }

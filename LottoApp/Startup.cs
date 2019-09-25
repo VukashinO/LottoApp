@@ -75,7 +75,6 @@ namespace LottoApp
                     { "oauth2", Enumerable.Empty<string>() },
                 });
             });
-            //const string connection = "server=petra19;database=lottodb;user=sa;password=password1;";
             const string connection = @"Server=SKL-VUKAS-OBRAD\SQLVULE;Database=LottoDb;Trusted_Connection=True";
             services.AddDbContext<LottoDbContext>
                 (options => options.UseSqlServer(connection));

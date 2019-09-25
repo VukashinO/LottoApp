@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataLayer.Tickets.Views
+﻿namespace DataLayer.Tickets.Views
 {
     public class TicketResultView
     {

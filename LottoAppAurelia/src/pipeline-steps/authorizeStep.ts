@@ -4,7 +4,7 @@ import {
   PipelineStep,
   Redirect
 } from "aurelia-router";
-import { AuthToken } from "./../user/userAuthorization/auth-token";
+import { AuthToken } from "./../auth/userAuthorization/auth-token";
 
 export class AuthorizeStep implements PipelineStep {
   constructor() {}

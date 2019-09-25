@@ -1,17 +1,14 @@
 import { ApiService } from "../../services/api-service";
-import { Router } from "aurelia-router";
 import { inject } from "aurelia-framework";
-import { Events } from "services/events";
+import { Events } from "../../events/events";
 import { EventAggregator } from "aurelia-event-aggregator";
 
-@inject(ApiService, Router, EventAggregator)
+@inject(ApiService,  EventAggregator)
 export class Ticket {
   public numbers: ITicketPostModel[] = [];
-  public checking;
   public errorDuplicate: boolean = false;
   constructor(
     private service: ApiService,
-    private route: Router,
     private event: EventAggregator
   ) {}
 
@@ -39,22 +36,19 @@ export class Ticket {
     this.getInputs();
   }
 
-  public async onClick() {
-    this.checking = await this.service.checkIfAdmin();
-    this.service.isAdmin = true;
-    this.route.navigateToRoute("admin");
-  }
-
   private checkIfSameNumber() {
     let uniqueValues: number[] = [];
     this.numbers.forEach(n => uniqueValues.push(+n.combination));
     let duplicate = uniqueValues.filter(
       (item, index) => uniqueValues.indexOf(item) === index
     );
+
     if (duplicate.length < 7) {
       this.errorDuplicate = true;
       return false;
     }
+
     return true;
   }
 }
+

@@ -53,8 +53,8 @@ namespace BusinessLayer.Rounds
             model.DateResults = DateTime.Now;
             _roundRepository.Update(model);
 
-            model.PayIn = CalculateProfit(model.Id);
-            model.PayOut = CalculateLoss(model.Id);
+            model.PayIn = CalculatePayIn(model.Id);
+            model.PayOut = CalculatePayOut(model.Id);
             _roundRepository.Update(model);
 
             UpdateUserBalance(model.Id);
@@ -65,14 +65,14 @@ namespace BusinessLayer.Rounds
             });
         }
 
-        private double CalculateProfit(int roundId)
+        private double CalculatePayIn(int roundId)
         {
             var tickets = _ticketRepository.GetTicketsByRound(roundId).Count();
 
             return tickets * 50;
         }
 
-        private int CalculateLoss(int roundId)
+        private int CalculatePayOut(int roundId)
         {
             int sum = 0;
             var tickets = _ticketRepository.GetTicketsByRound(roundId).ToList();

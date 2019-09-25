@@ -1,6 +1,6 @@
 import { HttpClient } from "aurelia-http-client";
 import { inject } from "aurelia-framework";
-import * as EndPoints from "../api-end-points/apiEndPoints";
+import * as EndPoints from "./apiEndPoints";
 
 @inject(HttpClient)
 export class ApiService {
@@ -10,7 +10,7 @@ export class ApiService {
     public isAdmin: boolean
   ) {}
 
-  public getTokken() {
+  public withAuthTokken() {
     return this.http.configure(x => {
       x.withBaseUrl(EndPoints.baseUrl);
       x.withHeader(
@@ -34,25 +34,25 @@ export class ApiService {
 
   public createTicket(post: ITicketPostModel) {
     return jsonResponse<any>(
-      this.getTokken().post(EndPoints.createTicket, post)
+      this.withAuthTokken().post(EndPoints.createTicket, post)
     );
   }
 
   public getTicketsByUserId() {
     return jsonResponse<IResponceTicketViewModel[]>(
-      this.getTokken().get(EndPoints.getTicketsByUserId)
+      this.withAuthTokken().get(EndPoints.getTicketsByUserId)
     );
   }
 
   public getRoundWinningCombination() {
     return jsonResponse<IRoundWinningCombination>(
-      this.getTokken().get(EndPoints.getRoundWinningCombination)
+      this.withAuthTokken().get(EndPoints.getRoundWinningCombination)
     );
   }
 
   public getTicketsByRoundId(round: number) {
     return jsonResponse<IResponceTicketViewModel[]>(
-      this.getTokken().get(
+      this.withAuthTokken().get(
         `${EndPoints.baseUrl}${EndPoints.getTicketsByRoundId}${round}`
       )
     );
@@ -60,7 +60,7 @@ export class ApiService {
 
   public generateRound() {
     return jsonResponse<void>(
-      this.getTokken().put(
+      this.withAuthTokken().put(
         `${EndPoints.baseUrl}${EndPoints.generateRound}`,
         null
       )
@@ -69,19 +69,19 @@ export class ApiService {
 
   public getAllRounds() {
     return jsonResponse<IRoundVIewModel[]>(
-      this.getTokken().get(`${EndPoints.baseUrl}${EndPoints.getResultsByRound}`)
+      this.withAuthTokken().get(`${EndPoints.baseUrl}${EndPoints.getResultsByRound}`)
     );
   }
 
   public checkIfAdmin() {
     return jsonResponse<void>(
-      this.getTokken().get(`${EndPoints.baseUrl}${EndPoints.isAdmin}`)
+      this.withAuthTokken().get(`${EndPoints.baseUrl}${EndPoints.isAdmin}`)
     );
   }
 
   public getWinningCombinationByRoundId(round: number) {
     return jsonResponse<IWinningCombination>(
-      this.getTokken().get(
+      this.withAuthTokken().get(
         `${EndPoints.baseUrl}${EndPoints.getWinningCombination}${round}`
       )
     );

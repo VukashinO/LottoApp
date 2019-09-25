@@ -1,11 +1,11 @@
 <template>
     <require from="../header/header-nav-bar"></require>
-    <require from="../../common/tables/custom-table"></require>
+    <require from="../tables/custom-table"></require>
 
     <header-nav-bar router.bind="router" class="header"></header-nav-bar>
     <div class="mainBody">
-        <div class="row justify-content-end containerTicket headerRowFontSize">
-            <div class="col-9">
+        <div class="row justify-content-center containerTicket headerRowFontSize">
+            <div class="col-6 text-center">
                 <span>Tickets for Round: <b>${roundId}</b></span> ||
                 <span>WinningCombination: <b>${winningCombination.winningCombination}</b></span>
             </div>

@@ -1,4 +1,4 @@
-import { ApiService } from "services/api-service";
+import { ApiService } from "../../common/services/api-service";
 import { inject, observable } from "aurelia-framework";
 import { Router } from "aurelia-router";
 import { AuthToken } from "../userAuthorization/auth-token";

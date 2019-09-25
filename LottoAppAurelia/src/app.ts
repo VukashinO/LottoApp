@@ -15,21 +15,21 @@ export class App {
         name: "logIn",
         nav: false,
         title: "logIn",
-        moduleId: PLATFORM.moduleName("user/logIn/logIn")
+        moduleId: PLATFORM.moduleName("auth/logIn/logIn")
       },
       {
         route: "register",
         name: "register",
         nav: false,
         title: "register",
-        moduleId: PLATFORM.moduleName("user/register/register")
+        moduleId: PLATFORM.moduleName("auth/register/register")
       },
       {
         route: "ticket",
         name: "ticket",
         nav: true,
         title: "ticket",
-        moduleId: PLATFORM.moduleName("components/ticket/ticket"),
+        moduleId: PLATFORM.moduleName("common/components/ticket/ticket"),
         settings: { isAuth: true }
       },
       {
@@ -41,7 +41,7 @@ export class App {
       {
         route: "admin/ticketsByRound/:roundId",
         name: "ticketsByRound",
-        moduleId: PLATFORM.moduleName("components/roundTickets/roundTickets"),
+        moduleId: PLATFORM.moduleName("common/components/roundTickets/roundTickets"),
         settings: { isAdmin: true }
       }
     ]);

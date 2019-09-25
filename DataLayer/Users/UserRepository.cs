@@ -61,7 +61,6 @@ namespace DataLayer.Users
                     continue;
 
                 user.Balance += ticket.TicketPrize;
-               // _dbContext.Update(user);
             }
             _dbContext.SaveChanges();
         }
