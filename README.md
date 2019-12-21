@@ -4,7 +4,7 @@ lottoAppSedc
 This is Lotto - application and user can log in and register, can create tickets for specific round, wich is determinated by the Admin,
 one ticket contains seven different numbers, the winning combination gives the admin when the round is created. 
 Prize is calculated if user have minmum 4 correct guesses.
-##Idea
+## Idea
 LottoApp idea come from one of the workshops in SEDC-Academy. 
 The goal was to create a database with users and user tickets
 and join them with foreign keys.
