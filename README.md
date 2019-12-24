@@ -1,7 +1,5 @@
 # LottoApp
 
-lottoAppSedc
-
 ## About the project
 
 This is Lotto - application and user can log in and register, can create tickets for specific round, wich is determined by the Admin,
